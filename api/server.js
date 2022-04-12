@@ -3,10 +3,12 @@
 
 const express = require("express");
 
+const postsRouter = require("./posts/posts-router");
+
 const server = express();
 
-server.get("/", (req, res) => {
-  res.send("It is working");
-});
+server.use(express.json());
+
+server.use("/api/posts", postsRouter);
 
 module.exports = server;
